@@ -14,6 +14,9 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
 
     Map<String,String>FormValues={
 
+     
+
+
    
     "Img":"",
     "ProductCode":"",
@@ -23,6 +26,10 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     "UnitPrice":""
 
     };
+    //Loader Screen
+
+     bool Loading=false;
+
 
     // API method Calling
     InputOnChange(Mapkey,Textvalue){
@@ -60,15 +67,19 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
       }
 
       else{
-        //Data REST API...POST
+       setState(() {
+         Loading=true;
+       });
        await ProductCreateRequest(FormValues);
-        
-      }
+       setState(() {
+         Loading=false;
+       });
+     }
        
     }
 
 
-    
+
 
 
   @override
@@ -82,7 +93,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
             //Background Graphics
             ScreenBackground(context),
             Container(
-                child: (SingleChildScrollView(
+                child: Loading?(Center(child:CircularProgressIndicator(),)):((SingleChildScrollView(
                     padding: const EdgeInsets.all(20),
                     child: Column(
                       children: [
@@ -168,7 +179,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                         )
 
                       ],
-                    ))))
+                    )))))
           ],
         ));
   }
