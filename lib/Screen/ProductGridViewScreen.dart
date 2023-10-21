@@ -38,34 +38,36 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
 
   @override
 
-  Widget build(BuildContext context){
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text("Prouct View")),
-      body:Stack(
+      appBar: AppBar(title: Text('List Product'),),
+      body: Stack(
         children: [
           ScreenBackground(context),
           Container(
-            child: Loading?(Center(child:CircularProgressIndicator())):(
+            child:Loading?(Center(child:CircularProgressIndicator())):(
               GridView.builder(
-                gridDelegate: ProductGridViewStyle(),
-                itemCount:ProductList.length,
+                gridDelegate: ProductGridViewStyle(), 
+                
                 itemBuilder: (context,index){
-                  return Card(
-
+                    return Card(
                       child:Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                          Expanded(child: Image.network(ProductList[index]['Img'],fit: BoxFit.fill)),
-                          ],
-                      ),
-                  );
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(child:Image.network(ProductList[index]['Img'],fit:BoxFit.fill))
+                        ],
+                      )
+                    );
                 }
-
+                
+                
                 )
-            ),
+            )
           )
         ],
-      )
+      ),
+  
     );
   }
 }
