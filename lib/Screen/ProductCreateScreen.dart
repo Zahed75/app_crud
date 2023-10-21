@@ -93,7 +93,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
             //Background Graphics
             ScreenBackground(context),
             Container(
-                child: Loading?(Center(child:CircularProgressIndicator(),)):((SingleChildScrollView(
+                child: Loading?(const Center(child:CircularProgressIndicator(),)):((SingleChildScrollView(
                     padding: const EdgeInsets.all(20),
                     child: Column(
                       children: [

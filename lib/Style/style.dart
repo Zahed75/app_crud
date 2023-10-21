@@ -117,3 +117,15 @@ Fluttertoast.showToast(
         fontSize: 16.0
     );
 }
+
+//ProdcutGridView Style
+
+SliverGridDelegateWithFixedCrossAxisCount ProductGridViewStyle(){
+  return SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    mainAxisSpacing: 2,
+    mainAxisExtent: 250
+    
+    );
+
+}

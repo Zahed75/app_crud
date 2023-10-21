@@ -32,7 +32,7 @@ Future <List>ProductGridViewListRequest() async {
   var ResultBody = json.decode(response.body);
 
   if (ResultCode == 200 && ResultBody['status'] == "success") {
-    SuccessToast("Request Success~");
+    SuccessToast("Request Success");
     return ResultBody['data'];
   } else {
     ErrorToast("Request Fail Try Again!");
