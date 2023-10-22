@@ -66,14 +66,21 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 OutlinedButton(
-                                  onPressed: (){}, 
-                                child: Icon(CupertinoIcons.ellipsis_vertical_circle)
-                                ),
+                                  onPressed: (){
+
+                                  }, child: Icon(CupertinoIcons.ellipsis_vertical_circle,size:20,color:colorGreen,)),
+                                  SizedBox(width: 4,),
+                           
                                 
+                                 
                                 OutlinedButton(
-                                  onPressed: (){}, 
-                                  child:Icon(CupertinoIcons.delete)
-                                  )
+                                  onPressed: (){
+
+                                  }, child:Icon(CupertinoIcons.delete,size:20,color: colorRed,), ),
+
+                                 
+                                 
+                                 
                               ],
                             )
                           ],
