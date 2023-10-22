@@ -1,18 +1,16 @@
-import 'package:app_crud/Style/style.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:app_crud/RestAPI/RestClient.dart';
+import '../RestAPI/RestClient.dart';
+import '../Style/Style.dart';
 
-class ProductGridViewScreen extends StatefulWidget{
-   const ProductGridViewScreen({super.key});
-
+class ProductGridViewScreen extends StatefulWidget {
+  const ProductGridViewScreen({Key? key}) : super(key: key);
   @override
-  State<ProductGridViewScreen>createState() => _ProductGridViewScreenState();
-
+  State<ProductGridViewScreen> createState() => _ProductGridViewScreenState();
 }
 
 
-//caling REST API
-
+//API Call and store data in list
 class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
 
   List ProductList=[];
@@ -38,36 +36,47 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
 
   @override
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('List Product'),),
-      body: Stack(
+      appBar: AppBar(title:Text("ProductList"),),
+      body:Stack(
         children: [
           ScreenBackground(context),
           Container(
             child:Loading?(Center(child:CircularProgressIndicator())):(
               GridView.builder(
-                gridDelegate: ProductGridViewStyle(), 
-                
-                itemBuilder: (context,index){
+                gridDelegate: ProductGridViewStyle(),
+                itemCount:ProductList.length ,
+                 itemBuilder:(context,index){
+                  if(ProductList[index] !=null && ProductList[index]['Img'] !=null){
                     return Card(
-                      child:Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Expanded(child:Image.network(ProductList[index]['Img'],fit:BoxFit.fill))
-                        ],
-                      )
+                    child:Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(child: Image.network(ProductList[index]['Img'],fit:BoxFit.fill)),
+                    ],
+                    ),
+                    
+                  );
+                  }
+
+                  else{
+                    return Card(
+                        child:Center(
+                          child: Text('No Image Available'),
+                          )
                     );
-                }
-                
-                
+                  }
+                 
+                 }
+
                 )
-            )
+            ),
           )
         ],
-      ),
-  
+      )
     );
+
   }
 }
+
