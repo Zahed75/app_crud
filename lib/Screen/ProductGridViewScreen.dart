@@ -54,6 +54,31 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(child: Image.network(ProductList[index]['Img'],fit:BoxFit.fill)),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(5,5,5,5),
+                        child:Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(ProductList[index]['ProductName']),
+                            SizedBox(height: 7,),
+                            Text("Price: "+ProductList[index]['UnitPrice']+"BDT"),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                OutlinedButton(
+                                  onPressed: (){}, 
+                                child: Icon(CupertinoIcons.ellipsis_vertical_circle)
+                                ),
+                                
+                                OutlinedButton(
+                                  onPressed: (){}, 
+                                  child:Icon(CupertinoIcons.delete)
+                                  )
+                              ],
+                            )
+                          ],
+                        )
+                      )
                     ],
                     ),
                     
